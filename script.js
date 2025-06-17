@@ -21,9 +21,24 @@ class HashMap {
             this.arr[myHash] = [{key, value}]
             this.amount++;
             if (this.amount / this.capacity > this.loadFactor) {
+                // To update load capacity
                 this.capacity = this.capacity * 2;
-                oldArr = this.arr.splice();
-                // iterate over array and add new ones
+                // To save a copy of the old array
+                let oldArr = [...this.arr];
+                // To reset the array
+                this.arr = new Array(this.capacity);
+                // Set this.amount to 0 so it wont get inflated
+                this.amount = 0;
+                // To loop through old array and add each item to new hashMap
+                oldArr.forEach( elem => {
+                    if (elem === undefined) {
+
+                    } else {
+                        elem.forEach( e => {
+                            this.set(e.key, e.value)
+                        });
+                    }
+                })
                  
             }
         } else {
@@ -39,10 +54,20 @@ class HashMap {
 
     }
     get(key) {
-
+        let hashKey = this.hash(key);
+        if (!this.arr[hashKey] || this.arr[hashKey].length === 0) {
+            return null;
+        } else {
+            for (elem of this.arr[hashKey]) {
+                if (elem.key === key) {
+                    return elem.value;
+                }
+            }
+            return null;
+        }
     }
     has(key) {
-
+        // Hash key and see if bucket contains key
     }
     remove(key) {
 
