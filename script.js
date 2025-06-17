@@ -39,7 +39,7 @@ class HashMap {
 
     }
     get(key) {
-
+        // get key from arr
     }
     has(key) {
 
