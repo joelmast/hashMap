@@ -54,6 +54,7 @@ class HashMap {
 
     }
     get(key) {
+        // get key from arr
         let hashKey = this.hash(key);
         if (!this.arr[hashKey] || this.arr[hashKey].length === 0) {
             return null;
