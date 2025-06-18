@@ -101,9 +101,11 @@ class HashMap {
         }
     }
     length() {
-
+        // Thanks past me lol
+        return this.amount;
     }
     clear() {
+                this.arr = new Array(this.capacity);
 
     }
     keys() {
