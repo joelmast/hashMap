@@ -69,6 +69,18 @@ class HashMap {
     }
     has(key) {
         // Hash key and see if bucket contains key
+        // Hashed key to search
+        let hashKey = this.hash(key);
+        if (!this.arr[hashKey] || this.arr[hashKey].length === 0) {
+            return false;
+        } else {
+            for (elem of this.arr[hashKey]) {
+                if (elem.key === key) {
+                    return true
+                }
+            }
+            return false;
+        }
     }
     remove(key) {
 
