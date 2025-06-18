@@ -42,7 +42,7 @@ class HashMap {
                  
             }
         } else {
-            for(obj of this.arr[myHash]) {
+            for(let obj of this.arr[myHash]) {
                 if (obj.key === key) {
                     obj.value = value;
                     return;
@@ -59,7 +59,7 @@ class HashMap {
         if (!this.arr[hashKey] || this.arr[hashKey].length === 0) {
             return null;
         } else {
-            for (elem of this.arr[hashKey]) {
+            for (let elem of this.arr[hashKey]) {
                 if (elem.key === key) {
                     return elem.value;
                 }
@@ -74,7 +74,7 @@ class HashMap {
         if (!this.arr[hashKey] || this.arr[hashKey].length === 0) {
             return false;
         } else {
-            for (elem of this.arr[hashKey]) {
+            for (let elem of this.arr[hashKey]) {
                 if (elem.key === key) {
                     return true
                 }
@@ -105,18 +105,51 @@ class HashMap {
         return this.amount;
     }
     clear() {
-                this.arr = new Array(this.capacity);
-
+        this.arr = new Array(this.capacity);
+        this.amount = 0;
     }
     keys() {
+        let keys = [];
+        for (let i = 0; i < this.capacity; i++) {
+            if (!this.arr[i] || this.arr[i].length === 0) {
+
+            } else {
+                for (let elem of this.arr[i]) {
+                    keys.push(elem.key);
+                }
+            }
+        }
+        return keys;
 
     }
     values() {
+        let values = [];
+        for (let i = 0; i < this.capacity; i++) {
+            if (!this.arr[i] || this.arr[i].length === 0) {
 
+            } else {
+                for (let elem of this.arr[i]) {
+                    values.push(elem.value);
+                }
+            }
+        }
+        return values;
     }
     entries() {
+        let entries = [];
+        for (let i = 0; i < this.capacity; i++) {
+            if (!this.arr[i] || this.arr[i].length === 0) {
 
+            } else {
+                for (let elem of this.arr[i]) {
+                    entries.push([elem.key, elem.value]);
+                }
+            }
+        }
+        return entries;
     }
 
 
 }
+
+export { HashMap };
