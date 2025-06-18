@@ -83,7 +83,22 @@ class HashMap {
         }
     }
     remove(key) {
-
+        // remove key from hashtable
+        let hashKey = this.hash(key);
+        if (!this.arr[hashKey] || this.arr[hashKey].length === 0) {
+            return false;
+        } else {
+            for (let i = 0; i < this.arr[hashKey].length; i++) {
+                if (this.arr[hashKey][i].key === key) {
+                    // Remove elem from bucket
+                    this.arr[hashKey].splice(i, 1);
+                    // Decrease amount
+                    this.amount--;
+                    return true;
+                }
+            }
+            return false;
+        }
     }
     length() {
 
